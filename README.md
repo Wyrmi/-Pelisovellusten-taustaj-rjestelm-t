@@ -1,2 +1,2 @@
-# -Pelisovellusten-taustaj-rjestelm-t
+# -Pelisovellusten-taustajärjestelmät
 Kurssin tehtävät
