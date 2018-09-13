@@ -95,21 +95,31 @@ namespace webapi{
     [ApiController]
     public class PlayersController
     {
+        List<Player> players = new List<Player>();
 
         public Task<Player> Get(Guid id){
-            return null;
+            Player plr = players.Find(x => x.Id==id);
+            return Task.FromResult(plr);
         }
         public Task<Player[]> GetAll(){
-            return null;
+            Player[] playerArray = players.ToArray();
+            return Task.FromResult(playerArray);
         }
         public Task<Player> Create(NewPlayer player){
-            return null;
+            Player plr = new Player();
+            plr.Name = player.Name;
+            players.Add(plr);
+            return Task.FromResult(plr);
         }
         public Task<Player> Modify(Guid id, ModifiedPlayer player){
-            return null;
+            Player plr = players.Find(x => x.Id==id);
+            plr.Score = player.Score;
+            return Task.FromResult(plr);
         }
         public Task<Player> Delete(Guid id){
-            return null;
+            Player plr = players.Find(x => x.Id==id);
+            players.Remove(plr);
+            return Task.FromResult(plr);
         }
     }
 }
