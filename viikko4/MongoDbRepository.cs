@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson;
-//using game_server.Players;
 
 namespace webapi
 {
@@ -87,7 +86,6 @@ namespace webapi
             plr.items.Add(item);
             await _collection.ReplaceOneAsync(filter, plr);
             return item;
-            //throw new NotImplementedException();
         }
 
         public async Task<Item> DeleteItem(Guid playerid, Guid itemId)
@@ -105,7 +103,6 @@ namespace webapi
             Player plr = await _collection.Find(filter).FirstAsync();
             Item itm = plr.items.Find(x => x.Id==itemId);
             return itm;
-            //throw new NotImplementedException();
         }
 
         public async Task<Item[]> GetAllItems(Guid playerId)
@@ -114,7 +111,6 @@ namespace webapi
             Player plr = await _collection.Find(filter).FirstAsync();
             Item[] ItemArray = plr.items.ToArray();
             return  ItemArray;
-            //throw new NotImplementedException();
         }
 
         public async Task<Item> UpdateItem(Guid id,Guid itemId, ModifiedItem item)
@@ -124,7 +120,6 @@ namespace webapi
             Item itm = plr.items.Find(x => x.Id==itemId);
             itm.level = item.level;
             return itm;
-            //throw new NotImplementedException();
         }
     }
 }
